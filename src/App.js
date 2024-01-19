@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Select from 'react-select';
+
+const options = [
+  { value: 'apple', label: 'Apple' },
+  { value: 'banana', label: 'Banana' },
+  { value: 'orange', label: 'Orange' },
+  { value: 'grape', label: 'Grape' },
+];
 
 function App() {
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleSelectChange = (selectedValues) => {
+
+    setSelectedOptions(selectedValues);
+  };
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+      <h2>Multi-Select Example</h2>
+      <Select
+        options={options}
+        isMulti
+        value={selectedOptions}
+        onChange={handleSelectChange}
+      />
+     
+    </div>
+      
     </div>
   );
 }
 
 export default App;
+
